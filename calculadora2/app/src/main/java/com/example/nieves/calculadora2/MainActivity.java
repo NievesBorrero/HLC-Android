@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         /* Eventos otros botones */
 
+        /*
         btnSigno.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -57,12 +58,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        */
 
         btnIgual.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 if(!esOperandoUno()){
-                    textResult.setText(Double.toString(realizarOperacion()));
+                    obtenerResultado();
                 }
             }
         });
@@ -85,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
                     suma = true;
                     textCuentas.setText(textCuentas.getText()+" + ");
                 } else {
+                    textCuentas.setText(Double.toString(realizarOperacion()));
                     suma = true;
-                    textCuentas.setText(Double.toString(realizarOperacion())+" + ");
+                    textCuentas.setText(textCuentas.getText()+" + ");
                 }
             }
         });
@@ -98,8 +101,9 @@ public class MainActivity extends AppCompatActivity {
                     resta = true;
                     textCuentas.setText(textCuentas.getText()+" - ");
                 } else {
+                    textCuentas.setText(Double.toString(realizarOperacion()));
                     resta = true;
-                    textCuentas.setText(Double.toString(realizarOperacion())+" - ");
+                    textCuentas.setText(textCuentas.getText()+" - ");
                 }
             }
         });
@@ -111,8 +115,9 @@ public class MainActivity extends AppCompatActivity {
                     multiplica = true;
                     textCuentas.setText(textCuentas.getText()+" x ");
                 } else {
+                    textCuentas.setText(Double.toString(realizarOperacion()));
                     multiplica = true;
-                    textCuentas.setText(Double.toString(realizarOperacion())+" x ");
+                    textCuentas.setText(textCuentas.getText()+" x ");
                 }
             }
         });
@@ -124,8 +129,9 @@ public class MainActivity extends AppCompatActivity {
                     divide = true;
                     textCuentas.setText(textCuentas.getText()+" / ");
                 } else {
+                    textCuentas.setText(Double.toString(realizarOperacion()));
                     divide = true;
-                    textCuentas.setText(Double.toString(realizarOperacion())+"/");
+                    textCuentas.setText(textCuentas.getText()+" / ");
                 }
 
             }
@@ -194,12 +200,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnDec.setOnClickListener(new View.OnClickListener() {
+       /* btnDec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addNum(btnDec, textCuentas);
+                textCuentas.setText(textCuentas.getText()+".");
             }
         });
+        */
     }
 
     /**
@@ -209,42 +216,37 @@ public class MainActivity extends AppCompatActivity {
      * @param textCuentas
      */
     private void addNum(Button boton, TextView textCuentas) {
+        int num = Integer.parseInt(boton.getText().toString());
         if(esOperandoUno()){
-           
                 String valorUno;
                 if (operando1 == 0) {
                     valorUno = boton.getText().toString();
                 } else {
-                    valorUno = Double.toString(operando1) + boton.getText().toString();
+                    valorUno = textCuentas.getText() + Integer.toString(num);
                 }
-                operando1 = Integer.parseInt(valorUno);
+
+                operando1 = Double.parseDouble(valorUno);
                 textCuentas.setText(valorUno);
             
         }else{
-          
                 String valorDos;
-                if (operando2 == 0) {
+                String texto = textCuentas.getText().toString();
+                String[] array = texto.split("[\\s]");
+                if (operando2 == 0 || array.length==1) {
                     valorDos = boton.getText().toString();
                 } else {
-                    valorDos = Double.toString(operando1) + boton.getText().toString();
+                    int entero = (int) operando2;
+                    //String dos = array[2];
+                    valorDos = Integer.toString(entero)+Integer.toString(num);
                 }
-                operando2 = Integer.parseInt(valorDos);
-                textCuentas.setText(textCuentas.getText()+valorDos);
+                operando2 = Double.parseDouble(valorDos);
+                String[] arrayCuentas = textCuentas.getText().toString().split("[\\s]");
+                textCuentas.setText(arrayCuentas[0]+" "+arrayCuentas[1]+" "+valorDos);
             
         }
     }
 
-    /*
-    * Comprueba si es la primera coma.
-    * @param operando (int)
-    * @return operando (int)
-    */
-    private boolean esPrimeraComa(int operando) {
-        String num = Integer.toString(operando);
-        Pattern patron = Pattern.compile(",");
-        Matcher matcher = patron.matcher(num);
-        return matcher.matches();
-    }
+
 
     /**
      * Realiza la operación correspondiente
@@ -253,14 +255,15 @@ public class MainActivity extends AppCompatActivity {
 
     private double realizarOperacion(){
         double resultado=0;
-        if(suma)
-            resultado= sumar(operando1, operando2);
-        if(resta)
-            resultado= restar(operando1, operando2);
-        if(multiplica)
-            resultado= multiplicar(operando1, operando2);
-        if(divide)
-            resultado= dividir(operando1, operando2);
+        if(suma) {
+            resultado = sumar(operando1, operando2);
+        }else if(resta) {
+            resultado = restar(operando1, operando2);
+        }else if(multiplica){
+            resultado = multiplicar(operando1, operando2);
+        }else if(divide) {
+            resultado = dividir(operando1, operando2);
+        }
 
         operando1 = resultado;
         operando2= 0;
@@ -268,6 +271,26 @@ public class MainActivity extends AppCompatActivity {
         return resultado;
 
     }
+
+    /**
+     * Obtiene el resultado de una operación.
+     */
+    private void obtenerResultado() {
+        double resultado = 0;
+        if (suma) {
+            resultado = sumar(operando1, operando2);
+        } else if (resta) {
+            resultado = restar(operando1, operando2);
+        } else if (multiplica) {
+            resultado = multiplicar(operando1, operando2);
+        } else if (divide) {
+            resultado = dividir(operando1, operando2);
+        }
+
+        textResult.setText(Double.toString(resultado));
+        operando1 = operando2 = 0;
+    }
+
 
     /**
      * Realiza una suma
