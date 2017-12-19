@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Conecta 4</string>
+
+    <string name="fin">Fin de la partida</string>
+
+    <string name="fullTable">No se pueden colocar más fichas</string>
+
+    <string name="titulo">Titulo</string>
+
+    <string name="gameOverTitle">Fin de la partida</string>
+
+    <string name="deseaContinuar">¿Quieres echar otra partida?</string>
+
+    <string name="about">Acerca De</string>
+
+    <string name="exit_text">Salir</string>
+
+    <string name="salir">Salir de la App</string>
+
+    <string name="secondCategoryPrefTitle">Ajustes del juego</string>
+    <string name="preferences">Preferencias</string>
+
+    <string name="playernameTitle">Nombre del jugador</string>
+    <string name="playernamesummary"> Indica nombre del jugador</string>
+    <string name="colorElection">Color ficha</string>
+    <string name="colorArray">cambia el color de la ficha del jugador</string>
+
+    <string name="player_name">Nombre del jugador</string>
+
+    <string name="ganaJugador">¡Has ganado!</string>
+    <string name="ganaMaquina">¡La máquina te ha derrotado!</string>
+
+    <string name="blue">Azul</string>
+    <string name="morado">Purpura</string>
+    <string name="básico">Gris</string>
+    <string name="naranja">Naranja</string>
+    <string name="rojo">Rojo</string>
+    <string name="title_activity_splash">splash</string>
+
+</resources>
+
