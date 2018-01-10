@@ -22,6 +22,9 @@
             android:name=".MainActivity">
 
         </activity>
+        <activity
+            android:name=".About">
+        </activity>
         <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,10 +1,14 @@
 package com.example.nieves.conecta4;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -51,6 +55,25 @@ public class MainActivity extends Activity implements OnClickListener{
 		outState.putString("TABLERO", game.gridToString());// Los datos se almacenan como un par nombre-valor.
 		//Guarda el estado asociado con una instancia actual de una Actividad
 		super.onSaveInstanceState(outState);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu, menu);
+		return true;
+	}
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+			case R.id.about:
+				Intent intent = new Intent(getApplicationContext(), About.class);
+				startActivity(intent);
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 
 	/**
