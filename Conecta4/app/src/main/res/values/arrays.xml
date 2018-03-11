@@ -16,5 +16,14 @@
         <item>3</item>
         <item>4</item>
     </string-array>
-    
+    <string-array name="jugadorInicialEtiqueta">
+        <item>Persona</item>
+        <item>Máquina</item>
+    </string-array>
+    <string-array name="prefJugadorValorInicial">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+
 </resources>

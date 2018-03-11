@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -22,8 +23,17 @@
             android:name=".MainActivity">
 
         </activity>
+        <activity android:name=".InterfazOnline">
+
+        </activity>
         <activity
             android:name=".About">
+        </activity>
+        <activity
+            android:name=".SettingActivity">
+        </activity>
+        <activity
+            android:name=".Preferencias">
         </activity>
         <activity android:name=".splash">
             <intent-filter>

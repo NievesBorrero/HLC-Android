@@ -28,7 +28,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	private Game game;
 	private ImageButton bValidar;
-	private TextView resultadoTextView;
+	private TextView jugadorView;
+	private String idPartida;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +44,13 @@ public class MainActivity extends Activity implements OnClickListener{
 				bValidar  = (ImageButton) findViewById(ids[i][j]);
 				bValidar.setOnClickListener(this);
 			}
-		}	
-		resultadoTextView = (TextView) findViewById(R.id.resultadoTextView);
+		}
+
+		jugadorView = (TextView) findViewById(R.id.jugadorView);
+
 	}
 
 	/*
-	*
 	*
 	*/
 	public void onSaveInstanceState(Bundle outState){ // Buddle->contenedor
@@ -71,6 +73,16 @@ public class MainActivity extends Activity implements OnClickListener{
 				Intent intent = new Intent(getApplicationContext(), About.class);
 				startActivity(intent);
 				return true;
+			case R.id.msj:
+				Intent sendIntent = new Intent();
+				sendIntent.setAction(Intent.ACTION_SEND);
+				sendIntent.putExtra(Intent.EXTRA_TEXT, "¡Conecta 4! no te lo pierdas");
+				sendIntent.setType("text/plain");
+				startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+				return true;
+			case R.id.preferences:
+				startActivity(new Intent(this, SettingActivity.class));
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}
@@ -86,13 +98,43 @@ public class MainActivity extends Activity implements OnClickListener{
         game.stringToGrid(grid);
         crearTablero();
     }
+
+	public String getPlayerName(SharedPreferences sharedPreferences){
+		String name = "";
+
+		if(sharedPreferences.contains(Preferencias.PLAYER_KEY)){
+			name = sharedPreferences.getString(Preferencias.PLAYER_KEY, Preferencias.PLAYER_DEFAULT);
+		}
+		return name;
+	}
+
+	public Boolean getPlayMusic(SharedPreferences sharedPreferences){
+		Boolean music = true;
+		if (sharedPreferences.contains(Preferencias.PLAY_MUSIC_KEY))
+			music = sharedPreferences.getBoolean(Preferencias.PLAY_MUSIC_KEY,
+					Preferencias.PLAY_MUSIC_DEFAULT);
+		return music;
+	}
 	
 
 
 	protected void onResume(){
 		super.onResume();
-		Music.play(this, R.raw.musica);
-	   	crearTablero();
+		Boolean play;
+		String player;
+
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		play = getPlayMusic(sharedPreferences);
+		player = getPlayerName(sharedPreferences);
+
+		if(player.trim().length()>0)
+			jugadorView.setText(player);
+		else
+			jugadorView.setText("Anonimo");
+
+		if (play == true)
+			Music.play(this, R.raw.musica);
+		crearTablero();
 
     }
 

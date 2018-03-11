@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:background="#0FF">
+    android:background="#FFF">
 
     <TextView
         android:layout_width="200dp"
@@ -14,7 +14,8 @@
         android:layout_marginBottom="40dp"
         android:text="Conecta 4"
         android:textColor="#111FFF"
-        android:textSize="40dp" />
+        android:textSize="40dp"
+        android:id="@+id/textView2" />
 
     <ImageView
         android:id="@+id/imagenLogo"
@@ -23,4 +24,28 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:src="@drawable/inicio" />
+
+    <Button
+        android:id="@+id/btnonline"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imagenLogo"
+        android:layout_marginTop="28dp"
+        android:background="#111FFF"
+        android:text="Online"
+        android:textColor="#FFF"/>
+
+    <Button
+        android:id="@+id/btnOffline"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_alignBottom="@+id/btnonline"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:text="Offline"
+        android:background="#111FFF"
+        android:textColor="#FFF"/>
 </RelativeLayout>

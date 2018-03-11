@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class splash extends Activity implements View.OnClickListener {
@@ -14,7 +15,8 @@ public class splash extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ImageView img = (ImageView) findViewById(R.id.imagenLogo);
-        img.setOnClickListener(this);
+        Button btnOnline = (Button) findViewById(R.id.btnonline);
+        Button btnOffline = (Button) findViewById(R.id.btnOffline);
 /* Para que empiece tras 4 segundos
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -25,9 +27,24 @@ public class splash extends Activity implements View.OnClickListener {
         }, 4000);
 
 */
+    btnOnline.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(splash.this, InterfazOnline.class));
+        }
+    });
+
+    btnOffline.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(splash.this, MainActivity.class));
+        }
+        });
 
 
     }
+
+
 
     @Override
     public void onClick(View view) {

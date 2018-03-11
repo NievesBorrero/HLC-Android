@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Datos personales">
+    <EditTextPreference
+        android:key="playerName"
+        android:title="Nombre del jugador"
+        android:summary="Pulse para introducir el nombre de jugador"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Avanzada">
+        <CheckBoxPreference
+            android:key="music"
+            android:title="¿Música?"
+            android:summary="Marque si desea música"
+            android:defaultValue="false" />
+        <ListPreference
+            android:key="empieza"
+            android:title="¿Quién empieza?"
+            android:summary="Persona/Máquina"
+            android:entries="@array/jugadorInicialEtiqueta"
+            android:entryValues="@array/prefJugadorValorInicial"
+            android:dialogTitle="Selecciona quien empieza"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>
