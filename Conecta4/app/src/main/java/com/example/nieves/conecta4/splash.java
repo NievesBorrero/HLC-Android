@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -15,6 +17,8 @@ public class splash extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ImageView img = (ImageView) findViewById(R.id.imagenLogo);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
+        img.startAnimation(animation);
         Button btnOnline = (Button) findViewById(R.id.btnonline);
         Button btnOffline = (Button) findViewById(R.id.btnOffline);
 /* Para que empiece tras 4 segundos

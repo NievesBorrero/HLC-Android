@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/layout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:id="@+id/tituloLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="25dp"
+                android:text="LOCAL"
+                android:textColor="#00BCD4"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/MarcadorLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tituloLocal"
+                android:width="90dp"
+                android:height="90dp"
+                android:background="@drawable/marcadorborde"
+                android:backgroundTint="#FFFFFF"
+                android:textAlignment="center"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/tituloVisitante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="25dp"
+                android:text="VISITANTE"
+                android:textColor="#00BCD4"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/restarLocal"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/MarcadorLocal"
+                android:layout_toEndOf="@+id/MarcadorLocal"
+                android:text="-1" />
+
+
+            <TextView
+                android:id="@+id/MarcadorVisitante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/tituloVisitante"
+                android:width="90dp"
+                android:height="90dp"
+                android:background="@drawable/marcadorborde"
+                android:backgroundTint="#FFFFFF"
+                android:textAlignment="center"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/restarV"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/MarcadorVisitante"
+                android:layout_toStartOf="@+id/MarcadorVisitante"
+                android:text="-1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout1"
+            android:background="@color/colorPrimaryDark">
+
+            <Button
+                android:id="@+id/reiniciar"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_alignEnd="@+id/tresPtosL"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="44dp"
+                android:text="reiniciar"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/fin"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/reiniciar"
+                android:layout_alignBottom="@+id/reiniciar"
+                android:layout_alignParentEnd="true"
+                android:text="finalizar"
+                android:textSize="12sp"
+                tools:layout_editor_absoluteX="157dp"
+                tools:layout_editor_absoluteY="421dp" />
+
+            <Button
+                android:id="@+id/tresPtosV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/reiniciar"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/bordes"
+                android:text="3 puntos" />
+
+            <Button
+                android:id="@+id/unPtoV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/unPtoL"
+                android:layout_alignBottom="@+id/unPtoL"
+                android:layout_alignStart="@+id/dosPtosV"
+                android:background="@drawable/bordes"
+                android:text="1  punto" />
+
+            <Button
+                android:id="@+id/dosPtosV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/unPtoV"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/bordes"
+                android:text="2\npuntos" />
+
+            <Button
+                android:id="@+id/dosPtosL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/dosPtosV"
+                android:layout_alignBottom="@+id/dosPtosV"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/bordes"
+                android:gravity="center"
+                android:text="2\npuntos" />
+
+            <Button
+                android:id="@+id/unPtoL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/dosPtosL"
+                android:layout_below="@+id/tresPtosL"
+                android:layout_marginTop="31dp"
+                android:background="@drawable/bordes"
+                android:text="1 punto" />
+
+            <Button
+                android:id="@+id/tresPtosL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tresPtosV"
+                android:layout_alignBottom="@+id/tresPtosV"
+                android:layout_alignStart="@+id/unPtoL"
+                android:background="@drawable/bordes"
+                android:text="3 puntos" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

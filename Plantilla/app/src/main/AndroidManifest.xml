@@ -30,6 +30,9 @@
         <activity android:name=".Adaptador"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".VistaConcreta"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
